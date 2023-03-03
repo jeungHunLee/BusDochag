@@ -74,6 +74,15 @@ enum Routeno: Codable {
             try container.encode(x)
         }
     }
+    
+    func getAssociatedValue() -> String {
+        switch self {
+        case .integer(let x):
+            return String(x)
+        case .string(let x):
+            return x
+        }
+    }
 }
 
 enum Routetp: String, Codable {
@@ -93,10 +102,11 @@ struct BusList_Header: Codable {
 // MARK: - BusList_Item extension
 extension BusList_Item {    //List View에 사용하기 위해 배열(model)의 각 요소는 Hashable 프로토콜을 준수해야 함
     static func == (lhs: BusList_Item, rhs: BusList_Item) -> Bool {    //Hashable 프로토콜은 Equatable 프로토콜을 준수해야함
-        lhs.routeid == rhs.routeid
+        lhs.routeid == rhs.routeid && lhs.arrtime == rhs.arrtime
     }
     
     func hash(into hasher: inout Hasher) {    //Hashable 프로토콜을 준수하기 위한 hash 함수
         hasher.combine(self.routeid)    //hasher에게 hash해 사용할 식별 가능한 값 전달하여 hashvalue 생성
+        hasher.combine(self.arrtime)
     }
 }
