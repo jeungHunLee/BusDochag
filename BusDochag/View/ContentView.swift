@@ -25,7 +25,7 @@ struct ContentView: View {
                         self.model.busList = []
                     }*/
             )
-            .padding()
+            //.padding()
         }
     }
 }

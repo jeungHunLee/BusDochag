@@ -88,6 +88,7 @@ enum Routeno: Codable {
 enum Routetp: String, Codable {
     case 일반버스 = "일반버스"
     case 직행좌석버스 = "직행좌석버스"
+    case 광역급행버스 = "광역급행버스"
 }
 
 enum Vehicletp: String, Codable {
